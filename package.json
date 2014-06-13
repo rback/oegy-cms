@@ -1,0 +1,15 @@
+{
+  "name": "oegy-cms",
+  "description": "Oegy CMS",
+  "version": "0.0.1",
+  "devDependencies": {
+    "beefy": "^2.0.0",
+    "browserify": "^4.1.10"
+  },
+  "scripts": {},
+  "main": "lib/oegy-cms.js",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "express": "^4.4.3"
+  }
+}
