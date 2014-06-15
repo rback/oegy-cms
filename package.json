@@ -10,6 +10,8 @@
   "main": "lib/oegy-cms.js",
   "dependencies": {
     "lodash": "^2.4.1",
-    "express": "^4.4.3"
+    "express": "^4.4.3",
+    "enchilada": "~0.9.0",
+    "less-middleware": "~1.0.3"
   }
 }
