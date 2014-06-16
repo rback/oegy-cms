@@ -1,4 +1,5 @@
 var express = require('express');
+var morgan  = require('morgan')
 var enchilada = require('enchilada');
 var lessMiddleware = require('less-middleware');
 var _ = require('lodash')
@@ -14,8 +15,10 @@ fs.readdir(oegyConfig.siteRoot, function(err, files) {
 
 var app = express();
 
+app.use(morgan());
 app.use(enchilada(__dirname + '/public'));
 app.use(lessMiddleware(__dirname + "/public"));
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/" + oegyConfig.siteRoot + "/oegy-site"));
 
 app.listen(8000);
