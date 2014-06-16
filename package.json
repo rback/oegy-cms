@@ -3,12 +3,14 @@
   "description": "Oegy CMS",
   "version": "0.0.1",
   "devDependencies": {
-    "beefy": "^2.0.0",
-    "browserify": "^4.1.10"
+    "nodemon": "^1.2.0"
   },
-  "scripts": {},
-  "main": "lib/oegy-cms.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "main": "oegy-cms.js",
   "dependencies": {
+    "browserify": "^4.1.10",
     "lodash": "^2.4.1",
     "express": "^4.4.3",
     "enchilada": "~0.9.0",
