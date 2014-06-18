@@ -1,24 +1,19 @@
-var express = require('express');
-var morgan  = require('morgan')
-var enchilada = require('enchilada');
-var lessMiddleware = require('less-middleware');
-var _ = require('lodash')
-var fs = require('fs')
-var oegyConfig = require('./lib/config')
-
-fs.readdir(oegyConfig.siteRoot, function(err, files) {
-  var dirs = _.each(files, function(file) {
-    return fs.statSync(oegyConfig.siteRoot + "/" + file).isDirectory()
-  })
-  console.log(dirs)
-})
+var express = require('express'),
+  morgan  = require('morgan'),
+  enchilada = require('enchilada'),
+  lessMiddleware = require('less-middleware'),
+  _ = require('lodash'),
+  fs = require('fs'),
+  sites = require('./lib/sites')
+  oegyConfig = require('./lib/config');
 
 var app = express();
+sites.siteList(console.log)
 
 app.use(morgan());
-app.use(enchilada(__dirname + '/public'));
-app.use(lessMiddleware(__dirname + "/public"));
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + "/" + oegyConfig.siteRoot + "/oegy-site"));
+app.use('/oegy-cms/js', enchilada(__dirname + '/public/js'));
+app.use('/oegy-cms/less', lessMiddleware('./public/less'));
+app.use('/oegy-cms', express.static('./public'));
+app.use(express.static(oegyConfig.siteRoot + '/oegy-site/output'));
 
 app.listen(8000);
