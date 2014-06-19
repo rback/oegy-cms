@@ -12,6 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "512"]
   end
 
-  #config.vm.provision :chef do |chef|
-  #end
+  config.vm.provision :chef_solo do |chef|
+    chef.log_level = :debug
+    chef.add_recipe "oegy_cms"
+  end
 end
