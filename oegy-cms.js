@@ -4,11 +4,12 @@ var express = require('express'),
   lessMiddleware = require('less-middleware'),
   _ = require('lodash'),
   fs = require('fs'),
-  sites = require('./lib/sites')
+  sites = require('./lib/sites'),
   oegyConfig = require('./lib/config');
 
-var app = express();
-sites.siteList(console.log)
+var app = express()
+
+app.get('/oegy-cms/rest/sites', sites.siteList)
 
 app.use(morgan());
 app.use('/oegy-cms/js', enchilada(__dirname + '/public/js'));
